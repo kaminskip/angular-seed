@@ -1,0 +1,22 @@
+<button type="button" class="btn btn-default" ng-click="showAccountsController.prev()"
+    ng-disabled="showAccountsController.pageNumber === 0">
+    {{ 'prev' | translate }}
+</button>
+<button type="button" class="btn btn-default pull-right" ng-click="showAccountsController.next()"
+    ng-disabled="showAccountsController.end">
+    {{ 'next' | translate }}
+</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th translate="number"></th>
+            <th translate="balance"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="account in showAccountsController.accounts">
+            <td>{{ account.number }}</td>
+            <td>{{ account.balance / 100 | number:2 }}</td>
+        </tr>
+    </tbody>
+</table>

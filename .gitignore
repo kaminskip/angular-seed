@@ -1,8 +1,5 @@
-logs/*
-!.gitkeep
-node_modules/
-bower_components/
-tmp
-/angular-seed.iml
-.DS_Store
-.idea
+/build
+/node_modules
+/bower_components
+/*.iml
+/.idea

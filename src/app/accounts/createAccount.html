@@ -1,0 +1,7 @@
+<form class="form">
+    <div class="form-group">
+        <button type="button" class="btn btn-default" ng-click="createAccountController.createAccount()">{{ 'createAccount' | translate }}</button>
+    </div>
+</form>
+<div class="alert alert-success" ng-hide="createAccountController.status !== 'success'">{{ 'success' | translate }}</div>
+<div class="alert alert-danger" ng-hide="createAccountController.status !== 'failure'">{{ 'failure' | translate }}</div>

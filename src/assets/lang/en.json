@@ -1,0 +1,17 @@
+{
+  "accounts": "Accounts",
+  "createAccount": "Create",
+  "showAccounts": "Show",
+  "language": "Language",
+  "pl": "Polish",
+  "en": "English",
+  "loginForm": "Login form",
+  "login": "Login",
+  "password": "Password",
+  "success": "Operation successed",
+  "failure": "Operation failed",
+  "number": "Number",
+  "balance": "Balance",
+  "next": "Next",
+  "prev": "Prev"
+}

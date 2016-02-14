@@ -1,15 +1,28 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
-  "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "name": "sample-app",
+  "authors": [
+    "Paweł Kamiński <kaminskip@gmail.com>"
+  ],
+  "description": "Sample init angular js application",
+  "main": "",
+  "moduleType": [],
   "license": "MIT",
-  "private": true,
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "angular": "~1.4.0",
-    "angular-route": "~1.4.0",
-    "angular-loader": "~1.4.0",
-    "angular-mocks": "~1.4.0",
-    "html5-boilerplate": "~5.2.0"
+    "angular": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "angular-translate": "^2.9.0",
+    "angular-translate-loader-static-files": "^2.9.0",
+    "angular-translate-storage-local": "^2.9.0",
+    "angular-cookies": "^1.5.0",
+    "bootstrap": "^3.3.6",
+    "angular-bootstrap": "^1.1.2"
   }
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>App Angular JS</title>
+    <meta name="description" content="Sample angular app">
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+<body ng-controller="AppController as appController">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#navbar-collapsed">
+                <span class="sr-only">Toggle</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">App name</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapsed">
+            <ul class="nav navbar-nav" ng-if="appController.isAuthorized">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" translate="accounts"></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/createAccount">{{ 'createAccount' | translate }}</a></li>
+                        <li><a href="#/showAccounts">{{ 'showAccounts' | translate }}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" translate="language"></a>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="appController.setLanguage('pl')">{{ 'pl' | translate }}</a></li>
+                        <li><a ng-click="appController.setLanguage('en')">{{ 'en' | translate }}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container" ng-view></div>
+<div class="navbar navbar-default navbar-fixed-bottom">
+    <span class="copyright pull-left">Sample footer</span>
+    <span class="copyright pull-right"></span>
+</div>
+<!-- inject:js -->
+<!-- endinject -->
+</body>
+</html>

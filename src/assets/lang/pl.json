@@ -1,0 +1,17 @@
+{
+  "accounts": "Konta",
+  "createAccount": "Utwórz",
+  "showAccounts": "Pokaż",
+  "language": "Język",
+  "pl": "Polski",
+  "en": "Angielski",
+  "loginForm": "Formularz logowania",
+  "login": "Login",
+  "password": "Hasło",
+  "success": "Operacja zakonczona poprawnie",
+  "failure": "Operacja zakończona błedem",
+  "number": "Numer",
+  "balance": "Saldo",
+  "next": "Dalej",
+  "prev": "Wstecz"
+}
