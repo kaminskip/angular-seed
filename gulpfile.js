@@ -19,9 +19,9 @@ var BUILD_DIR = "./build/",
         SRC_DIR + 'app/app.js',
         SRC_DIR + 'app/routing.js',
         SRC_DIR + 'app/**/*Module.js',
-        SRC_DIR + 'app/**/*Controller.js',
         SRC_DIR + 'app/**/*Service.js',
-        SRC_DIR + 'app/**/*Directive.js'
+        SRC_DIR + 'app/**/*Directive.js',
+        SRC_DIR + 'app/**/*Controller.js'
     ],
     APP_FILE = "app_libs.js",
     CSS = [
@@ -96,18 +96,16 @@ gulp.task('build', ['build_css', 'build_resources', 'build_vendor_js', 'build_ap
 
 // Build all application in developer mode
 gulp.task('dev_copy', function () {
-    gulp.src(CSS).pipe(gulp.dest(BUILD_DIR + 'assets/css/'));
-    gulp.src(VENDOR_LIBS).pipe(gulp.dest(BUILD_DIR + '/app/lib'));
+    gulp.src([SRC_DIR + 'assets/css/style.css']).pipe(gulp.dest(BUILD_DIR + 'assets/css/'));
     gulp.src(APP_LIBS).pipe(gulp.dest(BUILD_DIR + '/app'));
-    gulp.src(SRC_DIR + 'app/**/*.html').pipe(gulp.dest(BUILD_DIR + '/app'));
-    return gulp.src(SRC_DIR + 'assets/lang/**').pipe(gulp.dest(BUILD_DIR + '/assets/lang'));
+    gulp.src(SRC_DIR + 'assets/lang/**').pipe(gulp.dest(BUILD_DIR + '/assets/lang'));
+    return gulp.src(SRC_DIR + 'app/**/*.html').pipe(gulp.dest(BUILD_DIR + '/app'));
 });
 
 // Build all application in developer mode
-gulp.task('dev',['dev_copy'], function () {
-    var files = CSS.concat(VENDOR_LIBS).concat(APP_LIBS);
-    var src = gulp.src(files, {read: false});
+gulp.task('dev', ['dev_copy'], function () {
+    var src = gulp.src(CSS.concat(VENDOR_LIBS).concat(APP_LIBS), {read: false});
     return gulp.src(SRC_DIR + 'index.html')
-        .pipe(inject(src, {ignorePath: 'build', addRootSlash: false}))
+        .pipe(inject(src, {relative: true}))
         .pipe(gulp.dest(BUILD_DIR));
 });
