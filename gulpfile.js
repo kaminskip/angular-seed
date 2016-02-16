@@ -39,6 +39,9 @@ var gulp = require('gulp'),
     minifyCss = require('gulp-minify-css'),
     uglify = require('gulp-uglify'),
     inject = require('gulp-inject'),
+    watch = require('gulp-watch'),
+    batch = require('gulp-batch'),
+    Server = require('karma').Server,
     exec = require('child_process').exec;
 
 // Gulp tasks
@@ -93,6 +96,14 @@ gulp.task('build', ['build_css', 'build_resources', 'build_vendor_js', 'build_ap
         .pipe(gulp.dest(BUILD_DIR));
 });
 
+// Run test in production
+gulp.task('run_unit_test', function (done) {
+    new Server({
+        configFile: __dirname + '/src/test/unit/karma.conf.js',
+        singleRun: true
+    }, done).start();
+});
+
 
 // Build all application in developer mode
 gulp.task('dev_copy', function () {
@@ -103,9 +114,19 @@ gulp.task('dev_copy', function () {
 });
 
 // Build all application in developer mode
-gulp.task('dev', ['dev_copy'], function () {
+gulp.task('dev_createIndex', ['dev_copy'], function () {
     var src = gulp.src(CSS.concat(VENDOR_LIBS).concat(APP_LIBS), {read: false});
     return gulp.src(SRC_DIR + 'index.html')
         .pipe(inject(src, {relative: true}))
         .pipe(gulp.dest(BUILD_DIR));
 });
+
+// Watch for changes in src dir
+gulp.task('dev_watch', function () {
+    watch(SRC_DIR + '**/*.*', batch(function (events, done) {
+        gulp.start('dev_createIndex', done);
+    }));
+});
+
+// The default task
+gulp.task('default', ['dev_createIndex', 'dev_watch']);
